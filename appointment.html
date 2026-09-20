@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Appointment | Hospital Local Care</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        .booking-page {
+            min-height: 80vh;
+            padding: 80px 20px;
+            background: #f4fafb;
+        }
+
+        .booking-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .booking-intro {
+            padding: 20px;
+        }
+
+        .booking-intro h1 {
+            font-size: 52px;
+            line-height: 1.05;
+            margin: 15px 0;
+            color: #17313d;
+        }
+
+        .booking-intro h1 span {
+            color: #0da3b3;
+        }
+
+        .booking-intro p {
+            color: #66808c;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .booking-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(23, 49, 61, 0.10);
+            border: 1px solid #e4eef0;
+        }
+
+        .booking-card h2 {
+            color: #17313d;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #17313d;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #d5e3e6;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #0da3b3;
+            box-shadow: 0 0 0 3px rgba(13, 163, 179, 0.10);
+        }
+
+        .booking-button {
+            width: 100%;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            background: #0da3b3;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .booking-button:hover {
+            background: #078d9c;
+        }
+
+        .booking-message {
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .booking-message.success {
+            display: block;
+            background: #e9f8ef;
+            color: #167343;
+        }
+
+        .booking-message.error {
+            display: block;
+            background: #fff0f0;
+            color: #b42318;
+        }
+
+        @media (max-width: 800px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-intro h1 {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        <div class="logo-icon">✚</div>
+
+        <div>
+            <strong>Hospital</strong>
+            <span>Local Care</span>
+        </div>
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="departments.html">Departments</a>
+        <a href="doctors.html">Doctors</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <a href="appointment.html" class="nav-button">
+        Book Appointment
+    </a>
+
+</header>
+
+
+<main class="booking-page">
+
+    <div class="booking-container">
+
+        <div class="booking-intro">
+
+            <span class="section-label">
+                PATIENT CARE
+            </span>
+
+            <h1>
+                Book your
+                <span>appointment.</span>
+            </h1>
+
+            <p>
+                Choose your preferred doctor, select a date and time,
+                and send your appointment request directly to the doctor.
+            </p>
+
+            <p>
+                Your request will appear in the selected doctor's
+                secure appointment portal.
+            </p>
+
+        </div>
+
+
+        <div class="booking-card">
+
+            <h2>Appointment Details</h2>
+
+            <form id="appointmentForm">
+
+                <div class="form-group">
+                    <label for="patientName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="patientName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="patientEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="patientEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="patientPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="patientPhone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="doctor">
+                        Select Doctor
+                    </label>
+
+                    <select id="doctor" required>
+
+                        <option value="">
+                            Choose a doctor
+                        </option>
+
+                        <option value="dr-alex">
+                            Dr. Alex Morgan — General Medicine
+                        </option>
+
+                        <option value="dr-sarah">
+                            Dr. Sarah Williams — Cardiology
+                        </option>
+
+                        <option value="dr-michael">
+                            Dr. Michael Chen — Orthopedics
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="service">
+                        Service
+                    </label>
+
+                    <select id="service" required>
+
+                        <option value="">
+                            Select service
+                        </option>
+
+                        <option value="General Consultation">
+                            General Consultation
+                        </option>
+
+                        <option value="Follow-up">
+                            Follow-up
+                        </option>
+
+                        <option value="Medical Consultation">
+                            Medical Consultation
+                        </option>
+
+                        <option value="Laboratory Review">
+                            Laboratory Review
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="date">
+                        Appointment Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="time">
+                        Preferred Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="time"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="reason">
+                        Reason for Visit
+                    </label>
+
+                    <textarea
+                        id="reason"
+                        rows="4"
+                        placeholder="Briefly describe your reason for the appointment"
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="booking-button"
+                >
+                    Send Appointment Request →
+                </button>
+
+
+                <div
+                    id="bookingMessage"
+                    class="booking-message"
+                ></div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+const appointmentForm =
+    document.getElementById("appointmentForm");
+
+const bookingMessage =
+    document.getElementById("bookingMessage");
+
+
+appointmentForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    const patientName =
+        document.getElementById("patientName").value.trim();
+
+    const patientEmail =
+        document.getElementById("patientEmail").value.trim();
+
+    const patientPhone =
+        document.getElementById("patientPhone").value.trim();
+
+    const doctor =
+        document.getElementById("doctor").value;
+
+    const service =
+        document.getElementById("service").value;
+
+    const date =
+        document.getElementById("date").value;
+
+    const time =
+        document.getElementById("time").value;
+
+    const reason =
+        document.getElementById("reason").value.trim();
+
+
+    if (
+        !patientName ||
+        !patientEmail ||
+        !patientPhone ||
+        !doctor ||
+        !service ||
+        !date ||
+        !time
+    ) {
+
+        bookingMessage.textContent =
+            "Please complete all required fields.";
+
+        bookingMessage.className =
+            "booking-message error";
+
+        return;
+    }
+
+
+    const doctorNames = {
+
+        "dr-alex": "Dr. Alex Morgan",
+
+        "dr-sarah": "Dr. Sarah Williams",
+
+        "dr-michael": "Dr. Michael Chen"
+
+    };
+
+
+    const appointment = {
+
+        id: Date.now(),
+
+        patientName: patientName,
+
+        patientEmail: patientEmail,
+
+        patientPhone: patientPhone,
+
+        doctorId: doctor,
+
+        doctorName: doctorNames[doctor],
+
+        service: service,
+
+        date: date,
+
+        time: time,
+
+        reason: reason,
+
+        status: "Pending",
+
+        createdAt: new Date().toISOString()
+
+    };
+
+
+    const appointments =
+        JSON.parse(
+            localStorage.getItem("hospitalAppointments") || "[]"
+        );
+
+
+    appointments.push(appointment);
+
+
+    localStorage.setItem(
+        "hospitalAppointments",
+        JSON.stringify(appointments)
+    );
+
+
+    bookingMessage.textContent =
+        "Appointment request sent successfully to " +
+        appointment.doctorName +
+        ".";
+
+    bookingMessage.className =
+        "booking-message success";
+
+
+    appointmentForm.reset();
+
+});
+
+</script>
+
+</body>
+</html>
