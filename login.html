@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Doctor Login | Hospital Local Care</title>
+
+    <link rel="stylesheet" href="doctor-style.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        .doctor-login-page {
+            min-height: calc(100vh - 90px);
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(13, 163, 179, 0.13),
+                    transparent 35%
+                ),
+                #f3f9fa;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 70px 20px;
+        }
+
+
+        .doctor-login-container {
+            width: 100%;
+            max-width: 1050px;
+
+            display: grid;
+            grid-template-columns: 1fr 430px;
+
+            background: white;
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 30px 80px rgba(23, 49, 61, 0.14);
+        }
+
+
+        .doctor-login-intro {
+            padding: 65px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8f9fb,
+                    #f7fcfc
+                );
+        }
+
+
+        .doctor-login-intro h1 {
+            font-size: 52px;
+            line-height: 1.05;
+
+            color: #17313d;
+
+            margin: 15px 0 20px;
+        }
+
+
+        .doctor-login-intro h1 span {
+            color: #0da3b3;
+        }
+
+
+        .doctor-login-intro p {
+            font-size: 17px;
+            line-height: 1.7;
+
+            color: #68808a;
+
+            max-width: 520px;
+        }
+
+
+        .doctor-feature {
+            display: flex;
+
+            gap: 15px;
+
+            margin-top: 30px;
+
+            align-items: flex-start;
+        }
+
+
+        .doctor-feature-icon {
+            width: 44px;
+            height: 44px;
+
+            border-radius: 12px;
+
+            background: #0da3b3;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+
+            flex-shrink: 0;
+        }
+
+
+        .doctor-feature strong {
+            display: block;
+
+            color: #17313d;
+
+            margin-bottom: 4px;
+        }
+
+
+        .doctor-feature span {
+            color: #718890;
+
+            font-size: 14px;
+        }
+
+
+        .doctor-login-card {
+            padding: 55px 45px;
+        }
+
+
+        .login-icon {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 16px;
+
+            background: #0da3b3;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 26px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .doctor-login-card h2 {
+            font-size: 30px;
+
+            color: #17313d;
+
+            margin: 0 0 8px;
+        }
+
+
+        .doctor-login-card > p {
+            color: #728890;
+
+            margin-bottom: 30px;
+        }
+
+
+        .login-group {
+            margin-bottom: 20px;
+        }
+
+
+        .login-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: 600;
+
+            color: #17313d;
+        }
+
+
+        .login-group input {
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 14px 15px;
+
+            border: 1px solid #d5e3e6;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+
+        .login-group input:focus {
+            border-color: #0da3b3;
+
+            box-shadow:
+                0 0 0 3px rgba(13, 163, 179, 0.10);
+        }
+
+
+        .login-button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+            background: #0da3b3;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .login-button:hover {
+            background: #078d9c;
+        }
+
+
+        .login-error {
+            margin-top: 15px;
+
+            padding: 12px;
+
+            background: #fff1f1;
+
+            color: #b42318;
+
+            border-radius: 8px;
+
+            display: none;
+        }
+
+
+        @media (max-width: 850px) {
+
+            .doctor-login-container {
+                grid-template-columns: 1fr;
+            }
+
+            .doctor-login-intro {
+                padding: 40px;
+            }
+
+            .doctor-login-intro h1 {
+                font-size: 40px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="doctor-navbar">
+
+    <a href="../index.html" class="doctor-logo">
+
+        <div class="doctor-logo-icon">
+            ✚
+        </div>
+
+        <div>
+
+            <strong>Hospital</strong>
+
+            <span>Local Care</span>
+
+        </div>
+
+    </a>
+
+
+    <a
+        href="../appointment.html"
+        class="logout-button"
+        style="text-decoration:none;"
+    >
+        Patient Booking
+    </a>
+
+</header>
+
+
+
+<main class="doctor-login-page">
+
+    <div class="doctor-login-container">
+
+
+        <section class="doctor-login-intro">
+
+            <span class="dashboard-label">
+                HOSPITAL LOCAL CARE
+            </span>
+
+            <h1>
+                Doctor
+                <span>Portal.</span>
+            </h1>
+
+            <p>
+                Securely manage appointments submitted by
+                your patients and review your upcoming schedule.
+            </p>
+
+
+            <div class="doctor-feature">
+
+                <div class="doctor-feature-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        Patient Appointments
+                    </strong>
+
+                    <span>
+                        See appointment requests assigned to you.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="doctor-feature">
+
+                <div class="doctor-feature-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        Appointment Management
+                    </strong>
+
+                    <span>
+                        Accept or reject patient requests.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="doctor-feature">
+
+                <div class="doctor-feature-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        Doctor-specific Access
+                    </strong>
+
+                    <span>
+                        Each doctor sees only their own appointments.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="doctor-login-card">
+
+            <div class="login-icon">
+                ✚
+            </div>
+
+            <h2>
+                Welcome back
+            </h2>
+
+            <p>
+                Sign in to your doctor account.
+            </p>
+
+
+            <form id="doctorLoginForm">
+
+
+                <div class="login-group">
+
+                    <label for="doctorId">
+                        Doctor ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="doctorId"
+                        placeholder="Enter Doctor ID"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="login-group">
+
+                    <label for="doctorPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="doctorPassword"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Login to Doctor Portal →
+                </button>
+
+
+
+                <div
+                    id="loginError"
+                    class="login-error"
+                    role="alert"
+                ></div>
+
+
+            </form>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<script>
+
+const doctors = {
+
+    "DR001": {
+
+        password: "Alex@123",
+
+        doctorId: "dr-alex",
+
+        name: "Dr. Alex Morgan",
+
+        department: "General Medicine"
+
+    },
+
+
+    "DR002": {
+
+        password: "Sarah@123",
+
+        doctorId: "dr-sarah",
+
+        name: "Dr. Sarah Williams",
+
+        department: "Cardiology"
+
+    },
+
+
+    "DR003": {
+
+        password: "Michael@123",
+
+        doctorId: "dr-michael",
+
+        name: "Dr. Michael Chen",
+
+        department: "Orthopedics"
+
+    }
+
+};
+
+
+
+document
+    .getElementById("doctorLoginForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const enteredId =
+            document
+                .getElementById("doctorId")
+                .value
+                .trim()
+                .toUpperCase();
+
+
+        const enteredPassword =
+            document
+                .getElementById("doctorPassword")
+                .value;
+
+
+        const doctor =
+            doctors[enteredId];
+
+
+        if (
+            !doctor ||
+            doctor.password !== enteredPassword
+        ) {
+
+            const error =
+                document.getElementById("loginError");
+
+
+            error.textContent =
+                "Invalid Doctor ID or password.";
+
+
+            error.style.display =
+                "block";
+
+
+            return;
+
+        }
+
+
+
+        localStorage.setItem(
+            "doctorLoggedIn",
+            "true"
+        );
+
+
+        localStorage.setItem(
+            "doctorId",
+            doctor.doctorId
+        );
+
+
+        localStorage.setItem(
+            "doctorName",
+            doctor.name
+        );
+
+
+        localStorage.setItem(
+            "doctorDepartment",
+            doctor.department
+        );
+
+
+        window.location.href =
+            "appointments.html";
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
